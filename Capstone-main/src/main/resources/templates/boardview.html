@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/boardStyle.css">
+    <title>게시글 상세 페이지</title>
+</head>
+
+<body>
+<div class="board-wrap">
+    <div class="board-title">
+        <strong>문제 게시판</strong>
+        <p>문제를 등록하는 페이지입니다.</p>
+    </div>
+    <form th:action="@{/board/delete/{id}(id= ${board.id})}" method="post">
+    <div class="board-view">
+        <div class="title" >
+            <h1 id="view-title" th:text="${board.title}">제목입니다.</h1>
+        </div>
+        <div class="info">
+
+        </div>
+        <div class="cont">
+            <p id="view-cont" th:text="${board.content}">내용이 들어갈 부분입니다.</p>
+        </div>
+        <!-- 버튼-->
+        <div class="btn-wrap">
+            <a class="btn" th:href="@{/board/modify/{id}(id = ${board.id})}">수정</a>
+            <dl>
+                <dt>비밀번호</dt>
+                <dd><input type="password" id="password" name="password" placeholder="삭제하려면 게시글 비밀번호를 입력하세요." required>
+                </dd>
+            </dl>
+            <input class="btn" type="submit" value="삭제">
+        </div>
+    </div>
+    </form>
+</div>
+</body>
+</html>
